@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: 'app',
+        app: 'www',
         dist: 'dist'
     };
 
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: '0.0.0.0'
             },
             livereload: {
                 options: {
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'app')
+                            mountFolder(connect, 'www')
                         ];
                     }
                 }
@@ -118,7 +118,7 @@ module.exports = function (grunt) {
                     // require them into your main .coffee file
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
-                    src: '*.coffee',
+                    src: ['modules/*.coffee','*.coffee'],
                     dest: '.tmp/scripts',
                     ext: '.js'
                 }]
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
+                importPath: 'www/components',
                 relativeAssets: true
             },
             dist: {},
@@ -159,7 +159,7 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
-                    baseUrl: 'app/scripts',
+                    baseUrl: 'www/scripts',
                     optimize: 'none',
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
