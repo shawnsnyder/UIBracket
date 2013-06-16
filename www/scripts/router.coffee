@@ -7,19 +7,21 @@ define ["app"], (app) ->
     routes:
       "": "index"
       "screen":"screen"
-      "screen/":"screen"
+
 
     index: ->
-      console.log 'sumo'
+
     screen: ->
-    	console.log ('bigshit')
+    	console.log ('poo')
       
     initialize: () ->
       app.useLayout
         el: '#main'
         template: 'layouts/main-layout'
       .render()
-      console.log 'please!'
+
+
+
   )
   Router
 

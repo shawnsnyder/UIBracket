@@ -1,6 +1,6 @@
 
 require.config({
-    deps: ['../components/modernizr/modernizr', 'main'],
+    deps: ['../components/modernizr/modernizr', 'main', 'cordova-2.5.0.js'],
     paths: {
         jquery: '../components/jquery/jquery',
         lodash: '../components/lodash/lodash',
