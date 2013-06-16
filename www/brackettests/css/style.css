@@ -1,0 +1,298 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #eee;
+  font-family: helvetica;
+  font-size: 12px;
+  border-width: 4px;
+}
+
+#wrapper {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  overflow: hidden;
+}
+
+#swipeview-slider {
+  transition: all 1.5s ease;
+  position: relative;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.hasbra #top {
+  border-bottom-style: solid;
+}
+.hasbra #midtop {
+  border-right-style: solid;
+  border-color: white;
+}
+.hasbra #midbot {
+  border-bottom-style: solid;
+  border-right-style: solid;
+  border-color: white;
+}
+
+.be #cubebotmid .ctl {
+  border-top-style: solid;
+  border-right-style: solid;
+}
+.be #cubebotmid .cbl {
+  border-right-style: solid;
+}
+.be #cubebotmid .cbr {
+  border-bottom-style: solid;
+}
+
+.te #cubetop .cbr {
+  border-bottom-style: solid;
+}
+.te #cubetopmid .ctl {
+  border-right-style: solid;
+}
+.te #cubetopmid .cbl {
+  border-right-style: solid;
+}
+.te #cubebotmid .ctl {
+  border-top-style: solid;
+}
+
+.bc #cubetopmid .cbl {
+  border-bottom-style: solid;
+}
+.bc #cubebotmid .ctl {
+  border-right-style: solid;
+}
+.bc #cubebotmid .cbl {
+  border-right-style: solid;
+}
+.bc #cubebottom .ctl {
+  border-right-style: solid;
+}
+.bc #cubebottom .cbl {
+  border-right-style: solid;
+}
+
+.tc #cubetop .ctl {
+  border-right-style: solid;
+}
+.tc #cubetop .cbl {
+  border-right-style: solid;
+}
+.tc #cubetopmid .ctl {
+  border-right-style: solid;
+}
+.tc #cubetopmid .cbl {
+  border-bottom-style: solid;
+  border-right-style: solid;
+}
+
+.co #cubetop .ctl {
+  border-right-style: solid;
+}
+.co #cubetop .cbl {
+  border-right-style: solid;
+}
+.co #cubetopmid .ctl {
+  border-right-style: solid;
+}
+.co #cubetopmid .cbl {
+  border-right-style: solid;
+}
+.co #cubebotmid .ctl {
+  border-right-style: solid;
+}
+.co #cubebotmid .cbl {
+  border-right-style: solid;
+}
+.co #cubebottom .ctl {
+  border-right-style: solid;
+}
+.co #cubebottom .cbl {
+  border-right-style: solid;
+}
+
+.ce #cubetop .ctl {
+  border-right-style: solid;
+}
+.ce #cubetop .cbl {
+  border-right-style: solid;
+}
+.ce #cubetop .cbr {
+  border-bottom-style: solid;
+}
+.ce #cubebotmid .cbr {
+  border-bottom-style: solid;
+}
+.ce #cubebottom .ctl {
+  border-right-style: solid;
+}
+.ce #cubebottom .cbl {
+  border-right-style: solid;
+}
+
+.fin #cubetopmid .cbl {
+  border-bottom-style: solid;
+}
+.fin #cubetopmid .cbr {
+  border-bottom-style: solid;
+}
+
+.win #midtop {
+  border-bottom-style: solid;
+}
+
+#masterpage {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#mpageleft {
+  position: relative;
+  height: 100%;
+  width: 75%;
+  float: left;
+}
+
+#mpageright {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  background-color: none;
+  float: left;
+}
+
+#top {
+  height: 25%;
+  background-color: none;
+}
+
+#midtop {
+  height: 25%;
+  width: 100%;
+  background-color: none;
+}
+
+#midbot {
+  background-color: none;
+  height: 25%;
+  width: 100%;
+}
+
+#bot {
+  background-color: none;
+  height: 25%;
+  width: 100%;
+}
+
+#cubetop {
+  height: 25%;
+}
+
+#cubetopmid {
+  border-color: black;
+  height: 25%;
+}
+
+#cubebotmid {
+  height: 25%;
+}
+
+#cubebottom {
+  height: 25%;
+}
+
+.hide {
+  display: none;
+}
+
+.ctl {
+  float: left;
+  width: 50%;
+  height: 50%;
+}
+
+.ctr {
+  float: right;
+  width: 50%;
+  height: 50%;
+}
+
+.cbl {
+  float: left;
+  width: 50%;
+  height: 50%;
+}
+
+.cbr {
+  float: right;
+  width: 50%;
+  height: 50%;
+}
+
+#navigation {
+  position: absolute;
+}
+
+.navbox {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-style: solid;
+  border-color: black;
+}
+
+.livebox {
+  background-color: none;
+}
+
+#debugtools {
+  width: 400px;
+  height: 100px;
+  position: absolute;
+  z-index: 900;
+  overflow: hidden;
+  right: 0px;
+}
