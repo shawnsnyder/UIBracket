@@ -267,7 +267,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'clean:server',
+        //'clean:server',
         'coffee',
         'compass',
         'connect:test',
@@ -290,7 +290,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
+        //'jshint',
         'test',
         'build'
     ]);
