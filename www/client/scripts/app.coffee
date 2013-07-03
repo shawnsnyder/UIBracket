@@ -18,7 +18,7 @@ define ["layoutmanager"], (LayoutManager) ->
     
     # Allow LayoutManager to augment Backbone.View.prototype.
     manage: true
-    prefix: "scripts/templates/"
+    prefix: "client/scripts/templates/"
     fetch: (path) ->
       
       # Concatenate the file extension.

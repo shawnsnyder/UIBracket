@@ -300,6 +300,8 @@
 	},
 	"file_history":
 	[
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/app.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/index.html",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/Gruntfile.js",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/controllers/migrate.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/modules/home.coffee",
@@ -425,9 +427,7 @@
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/controllers/reports.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/transactionlist.html",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/promote.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/subscriptstate.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/subscription.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/options.html"
+		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/subscriptstate.html"
 	],
 	"find":
 	{

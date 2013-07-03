@@ -7,7 +7,7 @@ define(["layoutmanager"], function(LayoutManager) {
   JST = window.JST = window.JST || {};
   LayoutManager.configure({
     manage: true,
-    prefix: "scripts/templates/",
+    prefix: "client/scripts/templates/",
     fetch: function(path) {
       var done;
       path = path + ".html";

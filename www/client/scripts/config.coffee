@@ -1,6 +1,6 @@
 console.log 'require config is firing'
 require.config
-    deps: ["main", "cordova-2.5.0.js"]
+    deps: ["main", "client/cordova-2.5.0.js"]
     paths:
         jquery: "../components/jquery/jquery"
         lodash: "../components/lodash/lodash"

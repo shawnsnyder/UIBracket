@@ -69,22 +69,20 @@ app.configure(function() {
   app.use(express.static(__dirname + '/../../public'));
 });
 
-app.use("/styles", express.static(__dirname + '/styles'));
-app.use("/scripts", express.static(__dirname + '/scripts'));
-app.use("/images", express.static(__dirname + '/images'));
-app.use("/components", express.static(__dirname + '/components'));
+
+app.use("/client", express.static(__dirname + '/client'));
 app.use("/brackettests", express.static(__dirname + '/brackettests'));
 
-app.get('/', function(req, res){
+app.get('/', ensureAuthenticated, function(req, res){
 
-  //res.sendfile('./index.html');
-  console.log(req);
-  res.sendfile('index.html');
-  //res.sendfile(path_to_file);
-  //res.sendfile(path_to_file);
-  //res.render('index', { user: req.user });
-  //console.log(__dirname);
-  //app.use(express.static(__dirname + 'index.html'));
+    //res.sendfile('./index.html');
+    console.log(req);
+    res.sendfile('index.html');
+    //res.sendfile(path_to_file);
+    //res.sendfile(path_to_file);
+    //res.render('index', { user: req.user });
+    //console.log(__dirname);
+    //app.use(express.static(__dirname + 'index.html'));
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
