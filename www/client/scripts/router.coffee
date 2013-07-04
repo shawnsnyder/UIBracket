@@ -1,6 +1,10 @@
 
 # Application.
-define ["app"], (app) ->
+define [
+  "app"
+  "modules/mainmenu"
+
+], (app, MainmenuModule) ->
   
   # Defining the application router, you can attach sub routers here.
   Router = Backbone.Router.extend(
@@ -11,6 +15,9 @@ define ["app"], (app) ->
 
     index: ->
       console.log('this is happening')
+      menu =  new MainmenuModule.Views.Main
+      app.layout.setView '.main', menu
+      menu.render()
     screen: ->
     	console.log ('poo')
       
