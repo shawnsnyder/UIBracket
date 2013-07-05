@@ -4,23 +4,29 @@ define(["app", "modules/mainmenu"], function(app, MainmenuModule) {
   Router = Backbone.Router.extend({
     routes: {
       "": "index",
-      "screen": "screen"
+      "creategame": "creategame",
+      "joingame": "joingame"
     },
     index: function() {
-      var menu;
-      console.log('this is happening');
-      menu = new MainmenuModule.Views.Main;
-      app.layout.setView('.main', menu);
-      return menu.render();
+      app.layout.setView('.main', this.views['mainmenu']);
+      return this.views['mainmenu'].render();
     },
-    screen: function() {
-      return console.log('poo');
+    creategame: function() {
+      app.layout.setView('.main', this.views['creategame']);
+      return this.views['creategame'].render();
     },
     initialize: function() {
-      return app.useLayout({
+      var creategame, mainmenu;
+      app.useLayout({
         el: '#main',
         template: 'layouts/main-layout'
       }).render();
+      mainmenu = new MainmenuModule.Views.Main;
+      creategame = new MainmenuModule.Views.Creategame;
+      return this.views = {
+        mainmenu: mainmenu,
+        creategame: creategame
+      };
     }
   });
   return Router;

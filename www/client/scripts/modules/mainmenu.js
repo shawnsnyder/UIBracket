@@ -5,5 +5,16 @@ define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
   MainmenuModule.Views.Main = Backbone.View.extend({
     template: 'mainmenu'
   });
+  MainmenuModule.Views.Creategame = Backbone.View.extend({
+    template: 'creategame',
+    events: {
+      'click .create': 'create'
+    },
+    create: function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return console.log('working');
+    }
+  });
   return MainmenuModule;
 });

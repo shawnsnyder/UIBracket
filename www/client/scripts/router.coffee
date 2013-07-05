@@ -10,16 +10,16 @@ define [
   Router = Backbone.Router.extend(
     routes:
       "": "index"
-      "screen":"screen"
-
+      "creategame":"creategame"
+      "joingame":"joingame"
 
     index: ->
-      console.log('this is happening')
-      menu =  new MainmenuModule.Views.Main
-      app.layout.setView '.main', menu
-      menu.render()
-    screen: ->
-    	console.log ('poo')
+      app.layout.setView '.main', @.views['mainmenu']
+      @.views['mainmenu'].render()
+
+    creategame: ->
+      app.layout.setView '.main', @.views['creategame']
+      @.views['creategame'].render()
       
     initialize: () ->
       app.useLayout
@@ -27,8 +27,13 @@ define [
         template: 'layouts/main-layout'
       .render()
 
-
-
+      mainmenu =  new MainmenuModule.Views.Main
+      creategame =  new MainmenuModule.Views.Creategame
+      #joingame =  new MainmenuModule.Views.Main
+      @.views =
+        mainmenu: mainmenu
+        creategame: creategame
+        #joingame: joingame
   )
   Router
 

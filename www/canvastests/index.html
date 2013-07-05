@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>SwipeView</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/dragdealer.css" rel="stylesheet" type="text/css">
+	<!--script type="text/javascript" src="../../src/myswipe.js"></script-->
+	<script type="text/javascript" src="components/underscore/underscore.js"></script>
+		<script type="text/javascript" src="src/dragdealer.js"></script>
+	<script type="text/javascript" src="src/jquery.js"></script>
+	<script type="text/javascript" src="src/mytest.js"></script>
+	<script type="text/javascript" src="src/bracket-scaffold.js"></script>	
+
+</head>
+
+<body>
+
+	<div id="navigation">
+		<div id="navbox" class="navtemplate hide">
+		</div>
+	</div>
+	<div id="wrapper">
+			<div id="debugtools">
+				<div id="scaledebug" class="dragdealer">
+					<div class="red-bar handle"></div>
+				</div>				
+				<div id="positionxdebug" class="dragdealer">
+					<div class="red-bar handle"></div>
+				</div>				
+				<div id="positionydebug" class="dragdealer">
+					<div class="red-bar handle"></div>
+				</div>
+			</div>
+		<div id ="swipeview-slider" class="hidden">
+
+			<div id="masterpage" class="template hide">
+				<div id="mpageleft">
+					<div id="top">top</div>
+					<div id="midtop">midtop</div>
+					<div id="midbot">midbot</div>
+					<div id="bot">bottom</div>
+				</div>
+				<div id="mpageright">
+					<div id="cubetop">
+						<div class = "ctl">tl</div>
+						<div class = "ctr">tr</div>
+						<div class = "cbl">bl</div>
+						<div class = "cbr">br</div>
+					</div>					
+					<div id="cubetopmid">
+						<div class = "ctl">tl</div>
+						<div class = "ctr">tr</div>
+						<div class = "cbl">bl</div>
+						<div class = "cbr">br</div>
+					</div>							
+					<div id="cubebotmid">
+						<div class = "ctl">tl</div>
+						<div class = "ctr">tr</div>
+						<div class = "cbl">bl</div>
+						<div class = "cbr">br</div>
+					</div>					
+					<div id="cubebottom">
+						<div class = "ctl">tl</div>
+						<div class = "ctr">tr</div>
+						<div class = "cbl">bl</div>
+						<div class = "cbr">br</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+
+
+	swipeX = 0;
+	swipeY = 0;
+	swipeScale = 1;
+	swipeWidth = $('#swipeview-slider').width();
+	swipeHeight = $('#swipeview-slider').height();
+	swipeTrans = function(){
+		//console.log('swipeX:' + swipeX + ' swipeWidth:'+swipeWidth + ' scale:' + swipeScale);
+		$('#swipeview-slider').css({'transform':'translate('+swipeX*swipeWidth+'px,'+swipeY*swipeHeight+'px)'+' scale('+swipeScale+')'})
+		//$('#swipeview-slider').css({'transform':'skew(30deg) scale(1.1,1.1) rotate(40deg) translate(10px, 20px)'})
+	}
+
+	new Dragdealer('scaledebug',{
+		x: 1,
+		animationCallback: function(x,y){
+			if (x>0.1){
+				swipeScale = x;
+				swipeTrans();
+			}
+		}
+	});	
+	new Dragdealer('positionxdebug',{
+
+		x: 0,
+		animationCallback: function(x,y){
+			swipeX = -x*2;
+			swipeTrans();
+		}
+	});	
+	new Dragdealer('positionydebug',{
+
+		y: 0,
+		animationCallback: function(x,y){
+			console.log(swipeY);
+			swipeY = -x*2;
+			swipeTrans();
+		}
+	});
+
+	var gallery;
+
+	//bracketitems = new SwipeObjectCreator(32);
+	bracketitems = new SwipeObjectCreator(32);
+
+	hope = new createdivs(bracketitems, 32);
+
+	nav = new navigation(32, "navigation", 10);
+	<!--
+		//swipe object creator should pull in scaffold from mongo
+
+		//create divs should create divs with object
+
+		///pull the create divs and put from nav and put into create divs section
+
+		//make blank item and bracket item  
+	-->
+
+
+
+	//$('#swipeview-slider').css('transform', 'translate(0, 300%)');
+
+	</script>
+</body>
+
+

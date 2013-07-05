@@ -4,9 +4,17 @@
   var passport = require('passport');
   var util = require('util');
   var GoogleStrategy = require('passport-google').Strategy;
+  var Redis = require('redis');
+  var io = require('socket.io');
+  var bbRedis = require('backbone-redis');
+
+
+  server = app.listen(3007);
+  io = io.listen(server);
 
 
 
+console.log('here2');
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -72,17 +80,11 @@ app.configure(function() {
 
 app.use("/client", express.static(__dirname + '/client'));
 app.use("/brackettests", express.static(__dirname + '/brackettests'));
+app.use("/canvasttests", express.static(__dirname + '/brackettests'));
 
 app.get('/', ensureAuthenticated, function(req, res){
-
-    //res.sendfile('./index.html');
     console.log(req);
     res.sendfile('index.html');
-    //res.sendfile(path_to_file);
-    //res.sendfile(path_to_file);
-    //res.render('index', { user: req.user });
-    //console.log(__dirname);
-    //app.use(express.static(__dirname + 'index.html'));
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -122,7 +124,7 @@ app.get('/logout', function(req, res){
 });
 
 
-app.listen(3007);
+
 
 
 // Simple route middleware to ensure user is authenticated.
@@ -134,3 +136,95 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
+
+
+
+////
+////redis, socketio business
+////
+
+// Configuration settings
+var redisConfig  = {
+    port : 6379,
+    host : '127.0.0.1',
+    options : {
+        parser : 'javascript',
+        return_buffer : false
+    },
+};
+
+// Create the publish and subscribe clients for redis to
+// send to the pubsub middleware
+var db  = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options),
+    pub = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options),
+    sub = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options)
+
+// Server configuration, set the server view settings to
+// render in jade, set the session middleware and attatch
+// the browserified bundles to the app on the client side.
+app.configure(function() {
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.static(__dirname + '/../../'));
+    app.use(express.static(__dirname));
+    app.use(express.errorHandler({
+        dumpExceptions : true,
+        showStack      : true
+    }));
+});
+
+// Main application
+app.get('/', function(req, res) {
+    res.render(__dirname + '/index.html');
+});
+
+db.flushall();
+
+bbRedis.config({
+    io        : io,
+    database  : db,
+    publish   : pub,
+    subscribe : sub,
+    listener  : 'backbone',
+    safeMode  : true,
+    showDebug : true,
+    showError : true
+});
+
+
+model = bbRedis.schema()
+
+    // All CRUD events can be intercepted before being
+    // processed, allowing us to do validation, or anything
+    // else to ensure data integrity, ect...
+    .pre('create', function(next, model, options, cb) {
+        console.log('todo-pre-create');
+        next(model, options, cb);
+    })
+    .pre('read', function(next, model, options, cb) {
+        console.log('todo-pre-read');
+        next(model, options, cb);
+    })
+    .pre('update', function(next, model, options, cb) {
+        console.log('todo-pre-update');
+        next(model, options, cb);
+    })
+    .pre('delete', function(next, model, options, cb) {
+        console.log('todo-pre-delete');
+        next(model, options, cb);
+    })
+
+    // Subscribe events will pass in the current client's 
+    // socket connection instead of the model
+    .pre('subscribe', function(next, socket, options, cb) {
+        console.log('todo-pre-subscribe');
+        next(socket, options, cb);
+    })
+    .pre('unsubscribe', function(next, socket, options, cb) {
+        console.log('todo-pre-unsubscribe');
+        next(socket, options, cb);
+    });
+
+bbRedis.model('todo', model);
+bbRedis.model(123123123, model);
+
