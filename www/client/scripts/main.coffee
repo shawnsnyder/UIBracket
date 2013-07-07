@@ -2,14 +2,28 @@
 # Application.
 
 # Main Router.
-require ["app", "router", "backboneredis" ], (app, Router) ->
+require ["app", "router", "backboneredis", "socketio" ], (app, Router, backboneredis, socketio) ->
   
   console.log('main is firing')
+
+  
+
+  #fire up socket io connection
+  socket = io.connect();
+  bbRedis.config
+    io : socket
+    listener : 'backbone'
+  
+
+
 
   # Define your master router on the application namespace and trigger all
   # navigation from this instance.
   app.router = new Router()
   app.initialize()
+
+
+
   # Trigger the initial route and enable HTML5 History API support, set the
   # root folder to '/' by default.  Change in app.js.
   Backbone.history.start

@@ -7,6 +7,7 @@
   var Redis = require('redis');
   var io = require('socket.io');
   var bbRedis = require('backbone-redis');
+  var routes = require('./routes');
 
 
   server = app.listen(3007);
@@ -83,7 +84,7 @@ app.use("/brackettests", express.static(__dirname + '/brackettests'));
 app.use("/canvasttests", express.static(__dirname + '/brackettests'));
 
 app.get('/', ensureAuthenticated, function(req, res){
-    console.log(req);
+
     res.sendfile('index.html');
 });
 
@@ -118,14 +119,10 @@ app.get('/auth/google/return',
   });
 
 app.get('/logout', function(req, res){
-  console.log(req);
+
   req.logout();
   res.redirect('/');
 });
-
-
-
-
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
@@ -136,6 +133,21 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
+
+
+
+///crud redis calls
+app.post('/creategame', function(req,res){
+  console.log('inside mf');
+  console.log(req.body);
+  routes.createGame(req.body.id, req.body.name,function(res){
+    var location = req.headers.host + req.url + "/" + req.body.id;
+    if (res) res.send('Game Created', { 'Content-Location': location }, 201);
+    else res.send('Game already exists', 403);
+  });
+});
+
+///
 
 
 
@@ -158,20 +170,6 @@ var redisConfig  = {
 var db  = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options),
     pub = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options),
     sub = Redis.createClient(redisConfig.port, redisConfig.host, redisConfig.options)
-
-// Server configuration, set the server view settings to
-// render in jade, set the session middleware and attatch
-// the browserified bundles to the app on the client side.
-app.configure(function() {
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(express.static(__dirname + '/../../'));
-    app.use(express.static(__dirname));
-    app.use(express.errorHandler({
-        dumpExceptions : true,
-        showStack      : true
-    }));
-});
 
 // Main application
 app.get('/', function(req, res) {

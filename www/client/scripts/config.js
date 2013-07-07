@@ -28,11 +28,14 @@ require.config({
     },
     backboneredis: {
       deps: ["backbone", "underscore"],
-      exports: "Backbone"
+      exports: "bbRedis"
     },
     bootstrap: {
       deps: ["jquery"],
       exports: "jquery"
+    },
+    socketio: {
+      exports: 'io'
     }
   }
 });

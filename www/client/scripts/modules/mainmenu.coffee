@@ -4,6 +4,11 @@ define [
     'backbone'
 ], ($, app, Backbone ) ->
     MainmenuModule = app.module()
+    MainmenuModule.newGameModel = Backbone.Model.extend
+        defaults: ->
+            name: ''
+        url: '/creategame'
+
     MainmenuModule.Views.Main = Backbone.View.extend 
         template: 'mainmenu'     
     MainmenuModule.Views.Creategame = Backbone.View.extend 
@@ -13,5 +18,15 @@ define [
         create: (event) ->
             event.preventDefault()
             event.stopPropagation()
-            console.log('working')
+            gamename = $('.gamename-input').val()
+            console.log(gamename)
+            newGame = new MainmenuModule.newGameModel
+            newGame.set('id', new Date().getTime());
+            
+            newGame.set('name', gamename)
+
+            newGame.save {} ,
+                success:=>
+                    console.log('i guess that worked')
+                    console.log(newGame)
     MainmenuModule

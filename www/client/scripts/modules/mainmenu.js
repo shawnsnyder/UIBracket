@@ -2,6 +2,14 @@
 define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
   var MainmenuModule;
   MainmenuModule = app.module();
+  MainmenuModule.newGameModel = Backbone.Model.extend({
+    defaults: function() {
+      return {
+        name: ''
+      };
+    },
+    url: '/creategame'
+  });
   MainmenuModule.Views.Main = Backbone.View.extend({
     template: 'mainmenu'
   });
@@ -11,9 +19,21 @@ define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
       'click .create': 'create'
     },
     create: function(event) {
+      var gamename, newGame,
+        _this = this;
       event.preventDefault();
       event.stopPropagation();
-      return console.log('working');
+      gamename = $('.gamename-input').val();
+      console.log(gamename);
+      newGame = new MainmenuModule.newGameModel;
+      newGame.set('id', new Date().getTime());
+      newGame.set('name', gamename);
+      return newGame.save({}, {
+        success: function() {
+          console.log('i guess that worked');
+          return console.log(newGame);
+        }
+      });
     }
   });
   return MainmenuModule;
