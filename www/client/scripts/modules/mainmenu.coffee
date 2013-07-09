@@ -21,10 +21,10 @@ define [
             gamename = $('.gamename-input').val()
             console.log(gamename)
             newGame = new MainmenuModule.newGameModel
-            newGame.set('id', new Date().getTime());
+            newGame.set('gameid', new Date().getTime());
             
             newGame.set('name', gamename)
-
+            
             newGame.save {} ,
                 success:=>
                     console.log('i guess that worked')

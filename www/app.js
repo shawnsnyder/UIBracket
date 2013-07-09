@@ -15,6 +15,7 @@
 
 
 
+
 console.log('here2');
 
 // Passport session setup.
@@ -79,12 +80,13 @@ app.configure(function() {
 });
 
 
+///static files service
 app.use("/client", express.static(__dirname + '/client'));
 app.use("/brackettests", express.static(__dirname + '/brackettests'));
 app.use("/canvasttests", express.static(__dirname + '/brackettests'));
 
 app.get('/', ensureAuthenticated, function(req, res){
-
+    console.log('at root!!!');
     res.sendfile('index.html');
 });
 
@@ -138,9 +140,8 @@ function ensureAuthenticated(req, res, next) {
 
 ///crud redis calls
 app.post('/creategame', function(req,res){
-  console.log('inside mf');
-  console.log(req.body);
-  routes.createGame(req.body.id, req.body.name,function(res){
+  console.log(req);
+  routes.createGame(req.body.gameid, req.body.name,function(res){
     var location = req.headers.host + req.url + "/" + req.body.id;
     if (res) res.send('Game Created', { 'Content-Location': location }, 201);
     else res.send('Game already exists', 403);
@@ -148,7 +149,6 @@ app.post('/creategame', function(req,res){
 });
 
 ///
-
 
 
 ////

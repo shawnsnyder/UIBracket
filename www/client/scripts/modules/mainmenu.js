@@ -26,7 +26,7 @@ define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
       gamename = $('.gamename-input').val();
       console.log(gamename);
       newGame = new MainmenuModule.newGameModel;
-      newGame.set('id', new Date().getTime());
+      newGame.set('gameid', new Date().getTime());
       newGame.set('name', gamename);
       return newGame.save({}, {
         success: function() {
