@@ -300,10 +300,13 @@
 	},
 	"file_history":
 	[
-		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/config.coffee",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/components/backbone-redis/backbone.redis.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/modules/mainmenu.coffee",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/routes/index.js",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/app.js",
-		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/index.html",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/app.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/config.coffee",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/index.html",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/app.coffee",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/Gruntfile.js",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/controllers/migrate.php",
@@ -424,10 +427,7 @@
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/modules/profile.js",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/router.js",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/layouts/main-layout.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/assets/js/plugins/backbone.layoutmanager.js",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/assets/js/libs/backbone.js",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/index.php",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/controllers/reports.php"
+		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/assets/js/plugins/backbone.layoutmanager.js"
 	],
 	"find":
 	{
@@ -493,6 +493,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ensure",
+			"createServer",
 			"rates",
 			"event",
 			"rates",
@@ -618,9 +620,7 @@
 			"lightboxme",
 			"lightbox",
 			"app.sessionModel.get('subscription')",
-			"success",
-			"moment",
-			"message"
+			"success"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -690,6 +690,22 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"app.j",
+				"www/app.js"
+			],
+			[
+				"backbone",
+				"www/client/components/backbone-redis/backbone.redis.js"
+			],
+			[
+				"mainmenu",
+				"www/client/scripts/modules/mainmenu.coffee"
+			],
+			[
+				"app.",
+				"www/app.js"
+			],
 			[
 				"app.js",
 				"www/client/scripts/app.js"
@@ -1185,22 +1201,6 @@
 			[
 				"searcac",
 				"app/controllers/searchcache.php"
-			],
-			[
-				"listhtml",
-				"public/wizard-app/templates/listing.html"
-			],
-			[
-				"listinghtml",
-				"public/wizard-app/templates/listing.html"
-			],
-			[
-				"listingcoff",
-				"public/wizard-app/modules/listing.coffee"
-			],
-			[
-				"style",
-				"public/assets/css/scss/style.scss"
 			]
 		],
 		"width": 0.0

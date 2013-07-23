@@ -4,10 +4,29 @@ define [
     'backbone'
 ], ($, app, Backbone ) ->
     MainmenuModule = app.module()
-    MainmenuModule.newGameModel = Backbone.Model.extend
+    MainmenuModule.game = Backbone.Model.extend
         defaults: ->
             name: ''
-        url: '/creategame'
+            boogie: 'vfvfvfv'
+        url  : 'games',
+        type : 'game',
+        sync : _.sync,
+  
+
+    MainmenuModule.games = Backbone.Collection.extend
+
+
+        #Server communication settings
+        #Save all of the todo items under the `"todos"` namespace.
+        url  : 'games'
+        type : 'game'
+        sync : _.sync,
+
+        nextOrder: ()-> 
+            if !@.length 
+                return 1;
+            else 
+                return @.last().get('order') + 1;
 
     MainmenuModule.Views.Main = Backbone.View.extend 
         template: 'mainmenu'     
@@ -20,13 +39,13 @@ define [
             event.stopPropagation()
             gamename = $('.gamename-input').val()
             console.log(gamename)
-            newGame = new MainmenuModule.newGameModel
+            newGame = new MainmenuModule.game
             newGame.set('gameid', new Date().getTime());
-            
             newGame.set('name', gamename)
             
             newGame.save {} ,
                 success:=>
-                    console.log('i guess that worked')
+                    console.log('i guess that workedd')
+
                     console.log(newGame)
     MainmenuModule

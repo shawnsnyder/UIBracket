@@ -2,13 +2,28 @@
 define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
   var MainmenuModule;
   MainmenuModule = app.module();
-  MainmenuModule.newGameModel = Backbone.Model.extend({
+  MainmenuModule.game = Backbone.Model.extend({
     defaults: function() {
       return {
-        name: ''
+        name: '',
+        boogie: 'vfvfvfv'
       };
     },
-    url: '/creategame'
+    url: 'games',
+    type: 'game',
+    sync: _.sync
+  });
+  MainmenuModule.games = Backbone.Collection.extend({
+    url: 'games',
+    type: 'game',
+    sync: _.sync,
+    nextOrder: function() {
+      if (!this.length) {
+        return 1;
+      } else {
+        return this.last().get('order') + 1;
+      }
+    }
   });
   MainmenuModule.Views.Main = Backbone.View.extend({
     template: 'mainmenu'
@@ -25,12 +40,12 @@ define(['jquery', 'app', 'backbone'], function($, app, Backbone) {
       event.stopPropagation();
       gamename = $('.gamename-input').val();
       console.log(gamename);
-      newGame = new MainmenuModule.newGameModel;
+      newGame = new MainmenuModule.game;
       newGame.set('gameid', new Date().getTime());
       newGame.set('name', gamename);
       return newGame.save({}, {
         success: function() {
-          console.log('i guess that worked');
+          console.log('i guess that workedd');
           return console.log(newGame);
         }
       });

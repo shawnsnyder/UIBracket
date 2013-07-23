@@ -1,6 +1,5 @@
   var express = require('express');
   var app = express();
-
   var passport = require('passport');
   var util = require('util');
   var GoogleStrategy = require('passport-google').Strategy;
@@ -13,10 +12,6 @@
   server = app.listen(3007);
   io = io.listen(server);
 
-
-
-
-console.log('here2');
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -141,9 +136,9 @@ function ensureAuthenticated(req, res, next) {
 ///crud redis calls
 app.post('/creategame', function(req,res){
   console.log(req);
-  routes.createGame(req.body.gameid, req.body.name,function(res){
+  routes.createGame(req.body.gameid, req.body.name,function(resp){
     var location = req.headers.host + req.url + "/" + req.body.id;
-    if (res) res.send('Game Created', { 'Content-Location': location }, 201);
+    if (resp) res.send('Game Created', { 'Content-Location': location }, 201);
     else res.send('Game already exists', 403);
   });
 });
@@ -223,6 +218,6 @@ model = bbRedis.schema()
         next(socket, options, cb);
     });
 
-bbRedis.model('todo', model);
-bbRedis.model(123123123, model);
+
+bbRedis.model('games', model);
 
