@@ -4,6 +4,7 @@ define(["layoutmanager"], function(LayoutManager) {
   app = {
     root: "/"
   };
+  window.app = app;
   JST = window.JST = window.JST || {};
   LayoutManager.configure({
     manage: true,
@@ -15,8 +16,8 @@ define(["layoutmanager"], function(LayoutManager) {
         return JST[path];
       }
       done = this.async();
-      return $.get(app.root + path, (function(contents) {
-        return done(_.template(contents));
+      $.get(app.root + path, (function(contents) {
+        done(_.template(contents));
       }), "text");
     }
   });

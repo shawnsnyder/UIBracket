@@ -1,10 +1,32 @@
-<select> 
-
-</select>
 
 
-<div class="menubtn create">Create</div>
 
-<div class="">
-          <input class="gamename-input" type="text" value="" />
+
+
+
+
+<header>Create Game</header>
+<div class="main clearfix">
+	<form id="nl-form" class="nl-form">
+
+		<label>Name: </label>
+
+		<input type="text" value="" placeholder="my game" data-subline="For example: <em>Best Cats"/>
+
+		<br>
+		Size:
+		<select>
+			<option value="1" selected>8</option>
+			<option value="2">16</option>
+			<option value="3">32</option>
+			<option value="4">64</option>
+
+		</select>
+		
+		
+		<div class="nl-submit-wrap">
+			<button class="nl-submit" type="submit">Go</button>
+		</div>
+		<div class="nl-overlay"></div>
+	</form>
 </div>

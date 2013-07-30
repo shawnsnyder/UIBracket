@@ -7,12 +7,15 @@ require(["app", "router", "backboneredis", "socketio"], function(app, Router, ba
     io: socket,
     listener: 'backbone'
   });
-  app.router = new Router();
-  app.initialize();
-  Backbone.history.start({
-    pushState: false,
-    root: app.root
+  app.router = new Router({
+    init: function() {
+      return Backbone.history.start({
+        pushState: false,
+        root: app.root
+      });
+    }
   });
+  app.initialize();
   return $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
     var href, root;
     href = {

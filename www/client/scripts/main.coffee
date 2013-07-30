@@ -19,16 +19,18 @@ require ["app", "router", "backboneredis", "socketio" ], (app, Router, backboner
 
   # Define your master router on the application namespace and trigger all
   # navigation from this instance.
-  app.router = new Router()
+  app.router = new Router
+    init: ->
+      Backbone.history.start
+        pushState: false # set me to true when all backend routes are handled
+        root: app.root
   app.initialize()
 
 
 
   # Trigger the initial route and enable HTML5 History API support, set the
   # root folder to '/' by default.  Change in app.js.
-  Backbone.history.start
-    pushState: false
-    root: app.root
+
 
 
   # All navigation that is relative should be passed through the navigate

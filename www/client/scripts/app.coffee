@@ -9,6 +9,7 @@ define ["layoutmanager"], (LayoutManager) ->
   # The root path to run the application.
   app = root: "/"
 
+  window.app = app;
   
   # Localize or create a new JavaScript Template object.
   JST = window.JST = window.JST or {}
@@ -33,7 +34,9 @@ define ["layoutmanager"], (LayoutManager) ->
       # Seek out the template asynchronously.
       $.get app.root + path, ((contents) ->
         done _.template(contents)
+        return
       ), "text"
+      return
 
   
   # Mix Backbone.Events, modules, and layout management into the app object.

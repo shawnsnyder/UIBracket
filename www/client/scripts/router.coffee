@@ -14,23 +14,25 @@ define [
       "joingame":"joingame"
 
     index: ->
-      app.layout.setView '.main', @.views['mainmenu']
+      app.layout.setView '.container', @.views['mainmenu']
       @.views['mainmenu'].render()
 
     creategame: ->
-      app.layout.setView '.main', @.views['creategame']
-      @.views['creategame'].render()
+      console.log 'here'
+      app.layout.setView '.container', @views.creategame
+      @views.creategame.render()
+      return
       
-    initialize: () ->
+    initialize: (options) ->
       app.useLayout
         el: '#main'
         template: 'layouts/main-layout'
-      .render()
+      .render().then options.init
 
-      mainmenu =  new MainmenuModule.Views.Main
-      creategame =  new MainmenuModule.Views.Creategame
+      mainmenu = new MainmenuModule.Views.Main
+      creategame = new MainmenuModule.Views.Creategame
       #joingame =  new MainmenuModule.Views.Main
-      @.views =
+      @views =
         mainmenu: mainmenu
         creategame: creategame
         #joingame: joingame

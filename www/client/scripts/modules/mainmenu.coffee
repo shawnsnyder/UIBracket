@@ -2,7 +2,8 @@ define [
     'jquery'
     'app'
     'backbone'
-], ($, app, Backbone ) ->
+    'nl'
+], ($, app, Backbone, nl ) ->
     MainmenuModule = app.module()
     MainmenuModule.game = Backbone.Model.extend
         defaults: ->
@@ -28,12 +29,14 @@ define [
             else 
                 return @.last().get('order') + 1;
 
-    MainmenuModule.Views.Main = Backbone.View.extend 
+    MainmenuModule.Views.Main = Backbone.View.extend
         template: 'mainmenu'     
-    MainmenuModule.Views.Creategame = Backbone.View.extend 
-        template: 'creategame' 
+    MainmenuModule.Views.Creategame = Backbone.View.extend
+        template: 'Creategame' 
         events:
             'click .create': 'create'
+        serialize: ->
+            data: null
         create: (event) ->
             event.preventDefault()
             event.stopPropagation()
@@ -48,4 +51,13 @@ define [
                     console.log('i guess that workedd')
 
                     console.log(newGame)
+            return
+        beforeRender: ->
+            console.log 'before render!'
+            return
+        afterRender: ->
+            console.log 'bs2!'
+            nlform = new window.NLForm( document.getElementById( 'nl-form' ) );
+            return
+
     MainmenuModule

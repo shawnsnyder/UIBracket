@@ -8,19 +8,20 @@ define(["app", "modules/mainmenu"], function(app, MainmenuModule) {
       "joingame": "joingame"
     },
     index: function() {
-      app.layout.setView('.main', this.views['mainmenu']);
+      app.layout.setView('.container', this.views['mainmenu']);
       return this.views['mainmenu'].render();
     },
     creategame: function() {
-      app.layout.setView('.main', this.views['creategame']);
-      return this.views['creategame'].render();
+      console.log('here');
+      app.layout.setView('.container', this.views.creategame);
+      this.views.creategame.render();
     },
-    initialize: function() {
+    initialize: function(options) {
       var creategame, mainmenu;
       app.useLayout({
         el: '#main',
         template: 'layouts/main-layout'
-      }).render();
+      }).render().then(options.init);
       mainmenu = new MainmenuModule.Views.Main;
       creategame = new MainmenuModule.Views.Creategame;
       return this.views = {
