@@ -8,6 +8,8 @@
     "passport-google": ">= 0.0.0"
   },
   "devDependencies": {
-    "nodemon": "~0.7.8"
+    "nodemon": "~0.7.8",
+    "grunt": "~0.4.1",
+    "grunt-bg-shell": "~2.0.2"
   }
 }

@@ -21,6 +21,9 @@
 //   have a database of user records, the complete Google profile is serialized
 //   and deserialized.
 passport.serializeUser(function(user, done) {
+  console.log(user);
+  console.log('****user***');
+
   done(null, user);
 });
 
@@ -34,8 +37,8 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an OpenID identifier and profile), and invoke a
 //   callback with a user object.
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:3007/auth/google/return',
-    realm: 'http://localhost:3007/'
+    returnURL: 'http://10.0.0.19:3007/auth/google/return',
+    realm: 'http://10.0.0.19:3007/'
   },
   function(identifier, profile, done) {
     // asynchronous verification, for effect...
@@ -45,7 +48,10 @@ passport.use(new GoogleStrategy({
       // represent the logged-in user.  In a typical application, you would want
       // to associate the Google account with a user record in your database,
       // and return that user instead.
+      console.log(profile)
+
       profile.identifier = identifier;
+      console.log(identifier);
       return done(null, profile);
     });
   }
@@ -75,11 +81,15 @@ app.configure(function() {
 });
 
 
+
+
+
 ///static files service
 app.use("/client", express.static(__dirname + '/client'));
 app.use("/brackettests", express.static(__dirname + '/brackettests'));
-app.use("/canvasttests", express.static(__dirname + '/brackettests'));
+app.use("/canvasttests", express.static(__dirname + '/canvasttests'));
 
+//app.get('/',  function(req, res){
 app.get('/', ensureAuthenticated, function(req, res){
     console.log('at root!!!');
     res.sendfile('index.html');

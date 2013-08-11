@@ -300,10 +300,15 @@
 	},
 	"file_history":
 	[
-		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/components/backbone-redis/backbone.redis.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/modules/mainmenu.js",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/modules/mainmenu.coffee",
-		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/routes/index.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/router.coffee",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/app.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/routes/index.js",
+		"/Users/shawnsnyder/Documents/code/bbredis/node_modules/backbone-redis/examples/todos/todos.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/index.html",
+		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/grunt.js",
+		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/components/backbone-redis/backbone.redis.js",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/app.js",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/client/scripts/config.coffee",
 		"/Users/shawnsnyder/Documents/code/bracketYoCordova/www/index.html",
@@ -325,7 +330,6 @@
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/helpers/function.truncate.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/router.coffee",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/package.json",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/grunt.js",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/helpers/function.helper.cio.unreaditems.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/helpers/function.flag.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/helpers/function.profile-percentage.php",
@@ -423,11 +427,7 @@
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/app/controllers/admin-leads-facility.php",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/metrics.html",
 		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/main.js",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/video.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/modules/profile.js",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/router.js",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/layouts/main-layout.html",
-		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/assets/js/plugins/backbone.layoutmanager.js"
+		"/Users/shawnsnyder/Documents/code/yourtrainer-uifm/public/app/templates/video.html"
 	],
 	"find":
 	{
@@ -493,6 +493,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create",
 			"ensure",
 			"createServer",
 			"rates",
@@ -619,8 +620,7 @@
 			"lightbox_me",
 			"lightboxme",
 			"lightbox",
-			"app.sessionModel.get('subscription')",
-			"success"
+			"app.sessionModel.get('subscription')"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -639,6 +639,11 @@
 	},
 	"groups":
 	[
+		{
+			"sheets":
+			[
+			]
+		},
 		{
 			"sheets":
 			[
@@ -662,11 +667,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.372214206778,
 			1.0
 		],
 		"rows":
@@ -690,6 +702,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"mainmenu.js",
+				"www/client/scripts/modules/mainmenu.js"
+			],
 			[
 				"app.j",
 				"www/app.js"
@@ -1197,10 +1213,6 @@
 			[
 				"findphp",
 				"app/controllers/find.php"
-			],
-			[
-				"searcac",
-				"app/controllers/searchcache.php"
 			]
 		],
 		"width": 0.0
@@ -1229,6 +1241,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 208.0,
+	"side_bar_width": 153.0,
 	"status_bar_visible": true
 }
