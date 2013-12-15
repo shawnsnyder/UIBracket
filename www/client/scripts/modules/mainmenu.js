@@ -39,6 +39,7 @@ define(['jquery', 'app', 'backbone', 'nl'], function($, app, Backbone, nl) {
       };
     },
     create: function(event) {
+      debugger;
       var gamename, newGame,
         _this = this;
       event.preventDefault();
@@ -55,13 +56,16 @@ define(['jquery', 'app', 'backbone', 'nl'], function($, app, Backbone, nl) {
         }
       });
     },
-    beforeRender: function() {
-      console.log('before render!');
-    },
+    beforeRender: function() {},
     afterRender: function() {
       var nlform;
-      console.log('bs2!');
       nlform = new window.NLForm(document.getElementById('nl-form'));
+    }
+  });
+  MainmenuModule.Views.Test = Backbone.View.extend({
+    template: 'test',
+    init: function() {
+      return console.log('inside');
     }
   });
   return MainmenuModule;

@@ -1,6 +1,6 @@
 
 require.config
-    deps: ["main", "client/cordova-2.5.0.js"]
+    deps: ["main"]
     paths:
         jquery: "../components/jquery/jquery"
         #lodash: "../components/lodash/lodash"
@@ -12,15 +12,9 @@ require.config
         socketio: "../components/socket.io-client/dist/socket.io"
         backboneredis: "../components/backbone-redis/backbone.redis"
         nl:"../components/nlform/nlform"
-         
 
-
-
-    
     # Put additional maps here.
     shim:
-
-
         backbone:
             deps: ["underscore", "jquery"]
             exports: "Backbone"

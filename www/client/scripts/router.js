@@ -5,7 +5,8 @@ define(["app", "modules/mainmenu"], function(app, MainmenuModule) {
     routes: {
       "": "index",
       "creategame": "creategame",
-      "joingame": "joingame"
+      "joingame": "joingame",
+      "test": "test"
     },
     index: function() {
       app.layout.setView('.container', this.views['mainmenu']);
@@ -16,17 +17,24 @@ define(["app", "modules/mainmenu"], function(app, MainmenuModule) {
       app.layout.setView('.container', this.views.creategame);
       this.views.creategame.render();
     },
+    test: function() {
+      console.log('test');
+      app.layout.setView('.container', this.views.test);
+      this.views.test.render();
+    },
     initialize: function(options) {
-      var creategame, mainmenu;
+      var creategame, mainmenu, test;
       app.useLayout({
         el: '#main',
         template: 'layouts/main-layout'
       }).render().then(options.init);
       mainmenu = new MainmenuModule.Views.Main;
       creategame = new MainmenuModule.Views.Creategame;
+      test = new MainmenuModule.Views.Test;
       return this.views = {
         mainmenu: mainmenu,
-        creategame: creategame
+        creategame: creategame,
+        test: test
       };
     }
   });

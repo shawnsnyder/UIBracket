@@ -13,9 +13,6 @@ require ["app", "router", "backboneredis", "socketio" ], (app, Router, backboner
   bbRedis.config
     io : socket
     listener : 'backbone'
-  
-
-
 
   # Define your master router on the application namespace and trigger all
   # navigation from this instance.

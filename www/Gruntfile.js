@@ -14,6 +14,7 @@ module.exports = function(grunt) {
             },
             coffee: {
                 cmd: 'coffee --compile --bare --watch client/scripts',
+                bg:false
             },            
             nodeserver: {
                 cmd: 'node app.js',
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
     });
   
     grunt.loadNpmTasks('grunt-bg-shell');
-    grunt.registerTask('default', ['bgShell:compass', 'bgShell:coffee', 'bgShell:nodeserver']);
+    grunt.registerTask('default', ['bgShell:compass', 'bgShell:coffee']);
 };
 
 //'bgShell:watchCoffeeApp', 

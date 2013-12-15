@@ -13,16 +13,12 @@ define [
         type : 'game',
         sync : _.sync,
   
-
     MainmenuModule.games = Backbone.Collection.extend
-
-
         #Server communication settings
         #Save all of the todo items under the `"todos"` namespace.
         url  : 'games'
         type : 'game'
         sync : _.sync,
-
         nextOrder: ()-> 
             if !@.length 
                 return 1;
@@ -38,6 +34,7 @@ define [
         serialize: ->
             data: null
         create: (event) ->
+            debugger
             event.preventDefault()
             event.stopPropagation()
             gamename = $('.gamename-input').val()
@@ -45,7 +42,6 @@ define [
             newGame = new MainmenuModule.game
             newGame.set('gameid', new Date().getTime());
             newGame.set('name', gamename)
-            
             newGame.save {} ,
                 success:=>
                     console.log('i guess that workedd')
@@ -53,11 +49,15 @@ define [
                     console.log(newGame)
             return
         beforeRender: ->
-            console.log 'before render!'
             return
         afterRender: ->
-            console.log 'bs2!'
             nlform = new window.NLForm( document.getElementById( 'nl-form' ) );
             return
+
+    MainmenuModule.Views.Test = Backbone.View.extend
+        template: 'test'
+        init: ->
+            console.log 'inside'
+        
 
     MainmenuModule

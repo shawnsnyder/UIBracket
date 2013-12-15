@@ -5,11 +5,13 @@
   var GoogleStrategy = require('passport-google').Strategy;
   var Redis = require('redis');
   var io = require('socket.io');
+  
   var bbRedis = require('backbone-redis');
   var routes = require('./routes');
 
 
   server = app.listen(3007);
+
   io = io.listen(server);
 
 
@@ -23,7 +25,6 @@
 passport.serializeUser(function(user, done) {
   console.log(user);
   console.log('****user***');
-
   done(null, user);
 });
 
@@ -37,8 +38,8 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an OpenID identifier and profile), and invoke a
 //   callback with a user object.
 passport.use(new GoogleStrategy({
-    returnURL: 'http://10.0.0.19:3007/auth/google/return',
-    realm: 'http://10.0.0.19:3007/'
+    returnURL: 'http://10.0.0.12:3007/auth/google/return',
+    realm: 'http://10.0.0.12:3007/'
   },
   function(identifier, profile, done) {
     // asynchronous verification, for effect...
@@ -80,10 +81,6 @@ app.configure(function() {
   app.use(express.static(__dirname + '/../../public'));
 });
 
-
-
-
-
 ///static files service
 app.use("/client", express.static(__dirname + '/client'));
 app.use("/brackettests", express.static(__dirname + '/brackettests'));
@@ -123,10 +120,9 @@ app.get('/auth/google/return',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
-  });
+});
 
 app.get('/logout', function(req, res){
-
   req.logout();
   res.redirect('/');
 });
@@ -141,8 +137,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
-
-
 ///crud redis calls
 app.post('/creategame', function(req,res){
   console.log(req);
@@ -152,9 +146,6 @@ app.post('/creategame', function(req,res){
     else res.send('Game already exists', 403);
   });
 });
-
-///
-
 
 ////
 ////redis, socketio business
